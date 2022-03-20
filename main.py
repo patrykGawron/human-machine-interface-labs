@@ -1,3 +1,4 @@
+import pandas as pd
 import pylab as py
 import numpy as np
 from numpy.fft import rfft, rfftfreq
@@ -9,16 +10,15 @@ def sin(f = 1, T = 1, fs = 128, phi =0 ):
     return (s,t)
 
 from scipy.fft import fft, fftfreq
-fs = 100
-T = 1
 
-(y,t) = sin(f = 10.0, T=T, fs=fs)
+import h5py
+import numpy as np
+import pandas as pd
+filename = "./emg_gestures-12-repeats_short-2018-04-12-14-05-19-091.hdf5"
 
-N=int(Fs*T)
 
-yf = fft(y)
-xf = ......
-import matplotlib.pyplot as plt
-plt.stem(xf, np.abs(yf), use_line_collection=True)
-plt.grid()
-plt.show()
+df = pd.read_hdf(filename)
+emg15 = df["EMG_15"]
+print(emg15)
+
+
